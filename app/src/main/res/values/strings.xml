@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Top-Github</string>
+    <string name="repo_avatar_image">Avatar Image</string>
+    <string name="home_page_heading_text">Search top github repositories for this week</string>
+    <string name="button_go">GO</string>
+    <string name="hint_edit_text">Enter lang here</string>
 </resources>
