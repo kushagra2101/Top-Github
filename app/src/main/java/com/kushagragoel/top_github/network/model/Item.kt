@@ -41,12 +41,13 @@ data class Item(
     }
 
     override fun toString(): String {
-        var repoModelItem = "<b>User Name</b><br>${this.repo?.split('/')?.get(0)?:""}<br><br><hr>" +
-                "<b>Repo Name</b><br>${this.repo?.split('/')?.get(1)?:""}<br><br><hr>" +
-                "<b>Stars</b><br>${this.stars}<br><br><hr>" +
-                "<b>Stars Added</b><br>${this.added_stars}<br><br><hr>" +
-                "<b>Repository Description</b><br>${this.desc}<br><br><hr>" +
-                "<b>Forks</b><br>${this.forks}<br><br><hr>" +
+        var repoModelItem = "<b>User Name</b><br>${this.repo?.split('/')?.get(0)?:""}<br><br>" +
+                "<b>Repo Name</b><br>${this.repo?.split('/')?.get(1)?:""}<br><br>" +
+                "<b>Total Stars</b><br>${this.stars}<br><br>" +
+                "<b>Stars Added</b><br>${this.added_stars}<br><br>" +
+                "<b>Repository Description</b><br>${this.desc}<br><br>" +
+                "<b>Forks</b><br>${this.forks}<br><br>" +
+                "<b>Programming Language</b><br>${this.lang}<br><br>" +
                 "<b>Repo Link</b><br>${this.repo_link}<br><br>"
         var avatarLinks: String = ""
         if (!avatars.isNullOrEmpty()) {

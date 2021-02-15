@@ -1,6 +1,8 @@
 package com.kushagragoel.top_github.ui.repolist
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +15,7 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.kushagragoel.top_github.R
 import com.kushagragoel.top_github.databinding.RepoListFragmentBinding
+import com.kushagragoel.top_github.hideKeyboard
 import com.kushagragoel.top_github.network.model.Item
 
 class RepoListFragment : Fragment() {
@@ -62,7 +65,22 @@ class RepoListFragment : Fragment() {
             }
         })
 
+        binding.editTextTextPersonName.addTextChangedListener(object:TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                binding.button.isEnabled = p0?.length?.compareTo(0)?:0 > 0
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+
+            }
+        })
+
         binding.button.setOnClickListener {
+            hideKeyboard()
             if (!binding.editTextTextPersonName.text.isNullOrEmpty()) {
                 repoListViewModel.onLangButtonClick(binding.editTextTextPersonName.text.toString())
             }

@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/repoListFragment"
         android:name="com.kushagragoel.top_github.ui.repolist.RepoListFragment"
-        android:label="repo_list_fragment"
+        android:label="Search Repo List Screen"
         tools:layout="@layout/repo_list_fragment" >
         <action
             android:id="@+id/action_repoListFragment_to_repoDetailFragment"
@@ -24,6 +24,6 @@
     <fragment
         android:id="@+id/repoDetailFragment"
         android:name="com.kushagragoel.top_github.ui.repodetail.RepoDetailFragment"
-        android:label="repo_detail_fragment"
+        android:label="Repo Detail Fragment"
         tools:layout="@layout/repo_detail_fragment" />
 </navigation>

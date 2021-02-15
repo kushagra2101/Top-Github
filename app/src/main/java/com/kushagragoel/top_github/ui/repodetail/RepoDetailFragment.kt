@@ -43,15 +43,19 @@ class RepoDetailFragment : Fragment() {
         val imageView = view.findViewById<ImageView>(R.id.imageView)
         val repoItem = requireArguments().getParcelable("repo_item") as Item?
 
-        Glide.with(requireContext())
-            .load(repoItem!!.avatars?.get(0))
-            .apply(
-                RequestOptions()
-                    .circleCrop()
-                    .placeholder(R.drawable.loading_animation)
-                    .error(R.drawable.ic_broken_image)
-            )
-            .into(imageView)
+        if (!repoItem?.avatars.isNullOrEmpty()) {
+            Glide.with(requireContext())
+                .load(repoItem?.avatars?.get(0) ?: "")
+                .apply(
+                    RequestOptions()
+                        .circleCrop()
+                        .placeholder(R.drawable.loading_animation)
+                        .error(R.drawable.ic_broken_image)
+                )
+                .into(imageView)
+        } else {
+            imageView.setImageResource(R.drawable.ic_baseline_person_24)
+        }
 
         view.findViewById<TextView>(R.id.repoDetailView).text = HtmlCompat.fromHtml(repoItem.toString(),
             HtmlCompat.FROM_HTML_MODE_LEGACY)

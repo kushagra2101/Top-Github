@@ -45,6 +45,8 @@ class RepoListAdapter(private val clickListener: IClickListener, private val ite
                             .error(R.drawable.ic_broken_image)
                     )
                     .into(avatarImageView)
+            } else {
+                avatarImageView.setImageResource(R.drawable.ic_baseline_person_24)
             }
             val userRepoNameSplit = item.repo?.split('/')
             userNameTextView.text = userRepoNameSplit?.get(0)?:""

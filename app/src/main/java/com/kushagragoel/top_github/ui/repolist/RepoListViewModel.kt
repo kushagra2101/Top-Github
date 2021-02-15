@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.kushagragoel.top_github.network.TopGithubApi
-import com.kushagragoel.top_github.network.model.Item
 import com.kushagragoel.top_github.network.model.TopGithubApiOutputBean
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -35,10 +34,6 @@ class RepoListViewModel : ViewModel() {
         if (!enteredLang.isNullOrEmpty()) {
             callGetTopGithubProjectsAPI(enteredLang)
         }
-    }
-
-    fun onRepoItemClick(item: Item) {
-
     }
 
     override fun onCleared() {
