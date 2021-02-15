@@ -7,49 +7,54 @@
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
     android:layout_gravity="center"
-    android:background="@drawable/rounded_border_repo_background">
+    android:background="@drawable/rounded_border_repo_background"
+    android:elevation="2dp">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:id="@+id/avatarImageView"
+        android:layout_width="@dimen/avatar_list_item_width"
+        android:layout_height="@dimen/avatar_list_item_height"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:contentDescription="@string/repo_avatar_image"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/repoNameTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@tools:sample/avatars"
+        android:transitionName="imageView"
+        />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/repoNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:gravity="center"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintBottom_toTopOf="@+id/userNameTextView"
+        app:layout_constraintEnd_toEndOf="@+id/avatarImageView"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/avatarImageView"
+        app:layout_constraintTop_toBottomOf="@+id/avatarImageView"
         tools:text="repo name" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/userNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
+        android:gravity="center"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="@+id/repoNameTextView"
+        app:layout_constraintStart_toStartOf="@+id/repoNameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/repoNameTextView"
         tools:text="username" />
 </androidx.constraintlayout.widget.ConstraintLayout>

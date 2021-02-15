@@ -4,4 +4,5 @@
     <string name="home_page_heading_text">Search top github repositories for this week</string>
     <string name="button_go">GO</string>
     <string name="hint_edit_text">Enter lang here</string>
+    <string name="network_connectivity_issue_image">Could not fetch record due to network issues</string>
 </resources>

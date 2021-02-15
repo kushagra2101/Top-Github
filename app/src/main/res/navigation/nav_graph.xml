@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/repoListFragment">
+
+    <fragment
+        android:id="@+id/repoListFragment"
+        android:name="com.kushagragoel.top_github.ui.repolist.RepoListFragment"
+        android:label="repo_list_fragment"
+        tools:layout="@layout/repo_list_fragment" >
+        <action
+            android:id="@+id/action_repoListFragment_to_repoDetailFragment"
+            app:destination="@id/repoDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="repo_item"
+            app:argType="com.kushagragoel.top_github.network.model.Item" />
+    </fragment>
+    <fragment
+        android:id="@+id/repoDetailFragment"
+        android:name="com.kushagragoel.top_github.ui.repodetail.RepoDetailFragment"
+        android:label="repo_detail_fragment"
+        tools:layout="@layout/repo_detail_fragment" />
+</navigation>

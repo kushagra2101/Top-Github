@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="heading1">18sp</dimen>
+    <dimen name="avatar_list_item_width">100dp</dimen>
+    <dimen name="avatar_list_item_height">100dp</dimen>
+    <dimen name="heading2">16sp</dimen>
 </resources>
