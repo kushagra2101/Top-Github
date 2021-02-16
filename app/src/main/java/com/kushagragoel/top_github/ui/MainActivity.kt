@@ -1,9 +1,10 @@
-package com.kushagragoel.top_github
+package com.kushagragoel.top_github.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.kushagragoel.top_github.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
