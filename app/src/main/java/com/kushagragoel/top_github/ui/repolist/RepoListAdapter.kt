@@ -35,6 +35,7 @@ class RepoListAdapter(private val clickListener: IClickListener, private val ite
             view.setOnClickListener {
                 clickListener.onRepoItemClick(item, avatarImageView)
             }
+            avatarImageView.transitionName = item.repo_link
             if (!item.avatars.isNullOrEmpty()) {
                 Glide.with(avatarImageView.context)
                     .load(item.avatars[0])

@@ -26,8 +26,8 @@ fun Context.hideKeyboard(view: View) {
     inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
 }
 
-fun Context.isNetworkAvailable(): Boolean {
-    val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE)
+fun View.isNetworkAvailable(): Boolean {
+    val connectivityManager = rootView.context.getSystemService(Context.CONNECTIVITY_SERVICE)
     return if (connectivityManager is ConnectivityManager) {
         val networkInfo: NetworkInfo? = connectivityManager.activeNetworkInfo
         networkInfo?.isConnected ?: false

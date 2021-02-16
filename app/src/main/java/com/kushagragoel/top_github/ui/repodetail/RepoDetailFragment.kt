@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -19,6 +17,7 @@ import com.kushagragoel.top_github.network.model.Item
 class RepoDetailFragment : Fragment() {
 
     private lateinit var viewModel: RepoDetailViewModel
+    private lateinit var binding: RepoDetailFragmentBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +28,7 @@ class RepoDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = RepoDetailFragmentBinding.inflate(inflater)
+        binding = RepoDetailFragmentBinding.inflate(inflater)
         return binding.root
     }
 
@@ -40,7 +39,6 @@ class RepoDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val imageView = view.findViewById<ImageView>(R.id.imageView)
         val repoItem = requireArguments().getParcelable("repo_item") as Item?
 
         if (!repoItem?.avatars.isNullOrEmpty()) {
@@ -52,13 +50,17 @@ class RepoDetailFragment : Fragment() {
                         .placeholder(R.drawable.loading_animation)
                         .error(R.drawable.ic_broken_image)
                 )
-                .into(imageView)
+                .into(binding.imageView)
         } else {
-            imageView.setImageResource(R.drawable.ic_baseline_person_24)
+            binding.imageView.setImageResource(R.drawable.ic_baseline_person_24)
         }
 
-        view.findViewById<TextView>(R.id.repoDetailView).text = HtmlCompat.fromHtml(repoItem.toString(),
+        binding.imageView.transitionName = repoItem?.repo_link
+
+        binding.repoDetailView.text = HtmlCompat.fromHtml(repoItem.toString(),
             HtmlCompat.FROM_HTML_MODE_LEGACY)
+
+        binding.executePendingBindings()
 
     }
 

@@ -16,15 +16,18 @@ import androidx.navigation.fragment.findNavController
 import com.kushagragoel.top_github.R
 import com.kushagragoel.top_github.databinding.RepoListFragmentBinding
 import com.kushagragoel.top_github.hideKeyboard
+import com.kushagragoel.top_github.isNetworkAvailable
 import com.kushagragoel.top_github.network.model.Item
 
 class RepoListFragment : Fragment() {
+
+    private lateinit var binding: RepoListFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding: RepoListFragmentBinding = DataBindingUtil.inflate(
+        binding = DataBindingUtil.inflate(
             inflater, R.layout.repo_list_fragment, container, false)
 
         val repoListViewModel: RepoListViewModel = ViewModelProvider(this)
@@ -37,7 +40,7 @@ class RepoListFragment : Fragment() {
         val adapter = RepoListAdapter(object : RepoListAdapter.IClickListener {
             override fun onRepoItemClick(item: Item, imageView: ImageView) {
                 val extras = FragmentNavigatorExtras(
-                    imageView to "imageView"
+                    imageView to imageView.transitionName
                 )
                 val bundle = Bundle()
                 bundle.putParcelable("repo_item", item)
@@ -81,8 +84,11 @@ class RepoListFragment : Fragment() {
 
         binding.button.setOnClickListener {
             hideKeyboard()
-            if (!binding.editTextTextPersonName.text.isNullOrEmpty()) {
+            if (it.isNetworkAvailable()) {
                 repoListViewModel.onLangButtonClick(binding.editTextTextPersonName.text.toString())
+            } else {
+                binding.repoRecyclerView.visibility = View.GONE
+                binding.connectivityImageView.visibility = View.VISIBLE
             }
         }
 
@@ -91,6 +97,16 @@ class RepoListFragment : Fragment() {
         })
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        postponeEnterTransition()
+        binding.repoRecyclerView.viewTreeObserver
+            .addOnPreDrawListener {
+                startPostponedEnterTransition()
+                true
+            }
     }
 
 }
